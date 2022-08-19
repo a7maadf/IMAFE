@@ -1,2 +1,2 @@
-# imafe
+# Imafe
 TO BE RELEASED
