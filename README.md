@@ -38,3 +38,10 @@ IMAFER.py (Encryptor)
 
 - Done.
 
+<h2>
+Support
+</h2>
+
+Please consider
+
+[![](https://camo.githubusercontent.com/b18e4e33eb88215c17a5a66de3b51d92ce22cd7bbaf568561ecb0154ef3c1d76/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3733382f312a47393575796f6b4148344a433550707678344c6d6f514032782e706e67)](https://www.buymeacoffee.com/a7maadf)
