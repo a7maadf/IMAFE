@@ -1,5 +1,5 @@
 import random, os, string, time
-from Crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 def DeMafer():
