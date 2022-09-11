@@ -1,5 +1,10 @@
-import shutil
+import shutil, os, pyperclip
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
+def addToClipBoard(text):
+    command = 'echo | set /p nul=' + text.strip() + '| clip'
+    os.system(command)
 
 def DupImg(iname):
     try:
@@ -13,12 +18,35 @@ def DupImg(iname):
 
 def TheMerge(fname):
     try:
-        SecMsg = open(str(fname), "r", encoding='utf-8', errors="ignore")  # Opening the secret message
-        f = open(str(NewImgName), "a", errors="ignore")  # Opening the duplicated image for appending
-        f.write('\n' + SecMsg.read())
-        SecMsg.close()
-        f.close()
+        '''
+            Begin encryption part
+        '''
+        SecMsg = open(fname, "rb").read()  # Opening the secret message
+        key = get_random_bytes(16)
+        cipher = AES.new(key, AES.MODE_EAX)
+        ciphertext, tag = cipher.encrypt_and_digest(SecMsg)
+
+
+        file_out = open(str(NewImgName), "a", errors="ignore")  # Opening the duplicated image for appending
+        file_out.write('\n' + "-----BEGIN IMAFED DATA-----" + "\n" + 'DeMafed - ' + fname + '\n')
+        file_out.close()
+        file_out = open(str(NewImgName), "ab")
+        [file_out.write(x) for x in (cipher.nonce, tag, ciphertext)]
+        file_out.close()
+        file_out = open(str(NewImgName), "a", errors="ignore")
+        # file_out.write('\n' + "-----END IMAFED DATA-----")
         print("Merged successfully")
+        pyperclip.copy(str(key))
+        print("Password has been copied to your clipboard, store it in a safe place.")
+        Show = input("In case you have problem accessing your keyboard, write 'save' then hit enter; this will save the password in file named 'pass.txt'\n>> ")
+        if Show.lower() == "save":
+            # print("Your password (without the quotes) is '" + str(key) + "'", "Store it in a safe place since you won't have access to it again")
+            awf = open('pass.txt', 'w')
+            awf.write(str(key))
+            awf.close()
+        '''
+                    End encryption part
+        '''
     except FileNotFoundError:  # Handling secret file not being found
         print("File Not Found")
         main()
