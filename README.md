@@ -12,3 +12,9 @@ That's it, now you're good to go.
 <h2>
 Usage
 </h2>
+<h4>
+IMAFER.py (The Encryptor)
+</h4>
+- Run IMAFER.py  `python3 IMAFER.py`
+- First specify the location of the image you intend to hide your file inside (better be in the same directory of the .
+- Then choose the file you intend to encrypt
