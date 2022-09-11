@@ -9,3 +9,6 @@
 - run `pip install -r requirements.txt`
 
 That's it, now you're good to go.
+<h2>
+Usage
+</h2>
