@@ -1,6 +1,6 @@
 import shutil, os, pyperclip
-from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
+from Cryptodome.Cipher import AES
+from Cryptodome.Random import get_random_bytes
 
 def addToClipBoard(text):
     command = 'echo | set /p nul=' + text.strip() + '| clip'
