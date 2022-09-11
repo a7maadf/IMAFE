@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://i.ibb.co/PgSVZ18/logo-no-bg.png" alt="IMAFE"/>
-   <h1 align="center">IMAFE - Encrypt and Hide your secret files into an innocent looking image </h1>
+   <h1 align="center">IMAFE - Transform and Encrypt your confidential files into an innocent-looking image.</h1>
 </p>
 <h2>Installation</h2>
 
