@@ -1,14 +1,42 @@
-def DeMafer(fname):
-    IMAFED_f = open(str(fname), "r", encoding='utf-8', errors="ignore")
+import random, os, string, time
+from Crypto.Cipher import AES
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+def DeMafer():
+    Tk().withdraw()
+    fname = askopenfilename()
+    try:
+        IMAFED_f = open(str(fname), "rb")
+    except FileNotFoundError:
+        print("File not found")
     lines = IMAFED_f.readlines()
     for line in lines:
-        if line.find('-----BEGIN IMAFED DATA-----') != -1:
+        if line.find(b'-----BEGIN IMAFED DATA-----') != -1:
             DeMafed_N = lines[lines.index(line) + 1]
-            DeMafed = open(str(DeMafed_N).rstrip(), "w", encoding='utf-8', errors="ignore")
             sLine = lines.index(line) + 2
+            letters = string.ascii_lowercase
+            tempFName = ''.join(random.choice(letters) for i in range(5)) + 'rnd.txt'
+            file_in = open(tempFName, 'ab')
             for item in lines[sLine:]:
-                if item != "-----END IMAFED DATA-----":
-                    DeMafed.write(item)
-            quit()
+                if b'\r\n-----END IMAFED DATA-----' not in item:
+                    file_in.write(item)
+            file_in.close()
 
-DeMafer('imafed - image.jpg')
+    # Decryption
+    file_in = open(tempFName, "rb")
+    nonce, tag, ciphertext = [file_in.read(x) for x in (16, 16, -1)]
+    while True:
+        try:
+            passKey = eval(input("Please input the passkey: "))
+            cipher = AES.new(passKey, AES.MODE_EAX, nonce)
+            data = cipher.decrypt_and_verify(ciphertext, tag)
+            print("File decrypted successfully")
+            break
+        except Exception:
+            print("Error, probably wrong password")
+            time.sleep(0.5)
+    file_in.close()
+    os.remove(tempFName)
+    open((DeMafed_N).decode().rstrip(), "wb").write(data)
+
+DeMafer()
