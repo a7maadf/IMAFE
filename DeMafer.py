@@ -1,10 +1,12 @@
 import random, os, string, time
 from Cryptodome.Cipher import AES
-# from tkinter import Tk
-# from tkinter.filedialog import askopenfilename
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 def DeMafer():
-    # Tk().withdraw()
-    fname = input("Please enter the file name (include the extension)")
+    Tk().withdraw()
+    AllowedFiletypes = (("Image files", "*.jpg *.jpeg *.png"),)
+    # fname = input("Please enter the file name (include the extension)")
+    fname = os.path.basename(askopenfilename(title="Select an image file", filetypes=AllowedFiletypes))
     try:
         IMAFED_f = open(str(fname), "rb")
     except FileNotFoundError:

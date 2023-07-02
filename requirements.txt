@@ -1,3 +1,3 @@
-pycryptodome
+pycryptodomex
 pyperclip
 python-tk

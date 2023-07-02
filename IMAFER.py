@@ -1,19 +1,21 @@
 import shutil, os, pyperclip
 from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
 def addToClipBoard(text):
     command = 'echo | set /p nul=' + text.strip() + '| clip'
     os.system(command)
 
 def DupImg(iname):
-    try:
-        global NewImgName
-        NewImgName = 'imafed - ' + iname
-        shutil.copyfile(iname, str(NewImgName))  # Duplicating the image.
-    except FileNotFoundError:  # Handling image not being found
-        print("File Not Found....")
-        main()
+# try:
+    global NewImgName
+    NewImgName = 'imafed - ' + iname
+    shutil.copyfile(iname, str(NewImgName))  # Duplicating the image.
+# except FileNotFoundError:  # Handling image not being found
+#     print("File Not Found....")
+#     main()
 
 
 def TheMerge(fname):
@@ -52,18 +54,26 @@ def TheMerge(fname):
         main()
 
 
+
 def main():
-    DupImg(input("Please input the name of the image along with the extension ex. 'image.jpg' "))
-    TheMerge(
-        input("Please input the name of the file which has the secret messagealong with the extension ex. 'msg.txt' "))
+    Tk().withdraw()
+    AllowedFiletypes = (("Image files", "*.jpg *.jpeg *.png"),)
+    input("Hit enter to chose the image you want to encrypt the data in")
+    DupImg(os.path.basename(askopenfilename(title="Select an image file", filetypes=AllowedFiletypes)))
+    # DupImg(input("Please input the name of the image along with the extension ex. 'image.jpg' "))
+    print("Imported image name is", DupImg, "\nPlease hit enter to proceed with the file you want to encrypt")
+    input()
+    TheMerge(os.path.basename(askopenfilename(title="Select the file you want to Encrypt")))
+    # TheMerge(
+    #     input("Please input the name of the file which has the secret messagealong with the extension ex. 'msg.txt' "))
 
 
-# main()
-# quit()
-
-try:
-    main()
-except Exception:
-    print("Error")
-    quit()
-
+main()
+quit()
+#
+# try:
+#     main()
+# except Exception:
+#     print("Error")
+#     quit()
+#
