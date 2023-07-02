@@ -31,7 +31,9 @@ IMAFER.py (Encryptor)
  
 - Wait for few seconds
 
-- The password will be copied to you clipboard & the encrypted spoofing image will be saved in the same directory, it will be named in this form 
+- ~~The password will be copied to you clipboard~~ The password will be displayed on the terminal and saved in a txt file named 'pass.txt'
+
+- the encrypted spoofing image will be saved in the same directory, it will be named in this form 
 `imafed - <original image name and extention>`
 
 <h4>DeMafer.py (Decryptor)</h4>
@@ -40,7 +42,7 @@ IMAFER.py (Encryptor)
 
 - Choose the imaged which has the encrypted data stored inside.
 
-- Write the password.
+- Paste the password.
 
 - Done.
 
