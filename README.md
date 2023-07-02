@@ -8,7 +8,13 @@
 
 - run `pip install -r requirements.txt`
 
-That's it, now you're good to go.
+That's it, now you should good to go.
+
+
+<h2>Video demo</h2>
+
+https://github.com/a7maadf/IMAFE/assets/89315818/95b217d1-bf59-4c30-b425-abfca6b5f0df
+
 <h2>
 Usage
 </h2>
@@ -38,8 +44,7 @@ IMAFER.py (Encryptor)
 
 - Done.
 
-<h2>Video demo</h2>
-##### TO BE RELEASED #####
+
 
 
 <h2>
