@@ -9,13 +9,13 @@ def addToClipBoard(text):
     os.system(command)
 
 def DupImg(iname):
-# try:
-    global NewImgName
-    NewImgName = 'imafed - ' + iname
-    shutil.copyfile(iname, str(NewImgName))  # Duplicating the image.
-# except FileNotFoundError:  # Handling image not being found
-#     print("File Not Found....")
-#     main()
+    try:
+        global NewImgName
+        NewImgName = 'imafed - ' + iname
+        shutil.copyfile(iname, str(NewImgName))  # Duplicating the image.
+    except FileNotFoundError:  # Handling image not being found
+        print("File Not Found....")
+        main()
 
 
 def TheMerge(fname):
@@ -68,12 +68,10 @@ def main():
     #     input("Please input the name of the file which has the secret messagealong with the extension ex. 'msg.txt' "))
 
 
-main()
-quit()
-#
-# try:
-#     main()
-# except Exception:
-#     print("Error")
-#     quit()
-#
+
+try:
+    main()
+except Exception:
+    print("Error")
+    quit()
+
