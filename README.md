@@ -4,7 +4,7 @@
 </p>
 <h2>Installation</h2>
 
-- Download the [project's zip](https://github.com/a7maadf/IMAFE/archive/refs/heads/main.zip "project's zip") or run `git clone https://github.com/a7maadf/IMAFE.git`
+- Clone the project using `git clone https://github.com/a7maadf/IMAFE.git`
 
 - run `pip install -r requirements.txt`
 
