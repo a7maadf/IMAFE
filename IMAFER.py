@@ -36,11 +36,11 @@ def TheMerge(fname):
         file_out = open(str(NewImgName), "a", errors="ignore")
         # file_out.write('\n' + "-----END IMAFED DATA-----")
         print("Merged successfully")
-        pyperclip.copy(str(key))
+        # pyperclip.copy(str(key))
         print("Password has been copied to your clipboard, store it in a safe place.")
         Show = input("In case you have problem accessing your keyboard, write 'save' then hit enter; this will save the password in file named 'pass.txt'\n>> ")
         if Show.lower() == "save":
-            # print("Your password (without the quotes) is '" + str(key) + "'", "Store it in a safe place since you won't have access to it again")
+            print("Your password (without the quotes) is '" + str(key) + "'", "Store it in a safe place since you won't have access to it again")
             awf = open('pass.txt', 'w')
             awf.write(str(key))
             awf.close()
@@ -57,6 +57,9 @@ def main():
     TheMerge(
         input("Please input the name of the file which has the secret messagealong with the extension ex. 'msg.txt' "))
 
+
+# main()
+# quit()
 
 try:
     main()
